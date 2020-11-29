@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <body>
+        <form action='' method='POST'>
+            <p>
+                <label for='polish_chars_by_freq'>Popularność liter w języku polskim.</label>
+                <input type='text' name='polish_chars_by_freq' value='{{ polish_chars_by_freq }}' readonly="readonly" >
+            </p>
+            <p>
+                <label for='message_chars_by_freq'>Popularność liter w kryptogramie.</label>
+                <input type='text' name='message_chars_by_freq' value='{{ message_chars_by_freq }}' readonly="readonly" >
+            </p>
+            {% for error in errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+            <p>
+                <label for='from_key'>Zamien</label>
+                <input type='text' name='from_key' value='{{ from_key }}'>
+            </p>
+            <p>
+                <label for='to_key'>Na</label>
+                <input type='text' name='to_key' value='{{ to_key }}'>
+            </p>
+            <p>
+                <label for='coded_message'>Tekst do odszyfrowania</label>
+                <textarea name='coded_message' style='width: 100%; height: 200px;'>{{ coded_message }}</textarea>
+            </p>
+            <p>
+                <input type='submit' name='decode' value='Deszyfruj' {% if not coded_message %}disabled='disabled'{% endif %}>
+                <input type='submit' name='analize' value='Analizuj'>
+            </p>
+            <p>
+                <label for='decoded_message'>Odszyfrowany tekst</label>
+                <textarea name='decoded_message' style='width: 100%; height: 200px;'>{{ decoded_message }}</textarea>
+            </p>
+        </form>
+    </body>
+</html>
